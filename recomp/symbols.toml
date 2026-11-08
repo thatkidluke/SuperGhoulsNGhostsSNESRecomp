@@ -19,3 +19,4246 @@ addr = "81f7"
 bank = 0
 emit = false
 note = "Native NMI vector ($FFEA)"
+
+# --- Hand-written: task system (coroutines) -------------------------------
+# These routines switch the guest stack (TCS) and resume tasks with RTL from
+# another stack. Static code cannot express that, so they stay interpreted.
+# Found by tools/bisect_aot.py: AOT current_task_suspend hangs Level 1.
+
+[[func]]
+name = "current_task_remove"
+addr = "a717"
+bank = 1
+emit = false
+note = "TCS to scheduler stack + jmp run_tasks; keep LLE"
+
+[[func]]
+name = "current_task_suspend"
+addr = "a728"
+bank = 1
+emit = false
+note = "saves regs on task stack, TCS switch; AOT breaks resume (bisected)"
+
+# >>> BEGIN disassembly import
+
+[[func]]
+name = "clear_snes_regs"
+addr = "8100"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0083C2_entry"
+addr = "83c3"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_00847F"
+addr = "847f"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "neg_imul"
+addr = "851d"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_00853D"
+addr = "853d"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0085A6"
+addr = "85a6"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0085A6_local"
+addr = "85aa"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0085A6_85C6"
+addr = "85c6"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_008669"
+addr = "8669"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0086FC"
+addr = "86fc"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "update_layer_3"
+addr = "8700"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_008735"
+addr = "8735"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_008807"
+addr = "8807"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_008807_880E"
+addr = "880e"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_008807_8830"
+addr = "8830"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_00893C"
+addr = "8944"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_00898C"
+addr = "8994"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "palette_to_cgram"
+addr = "89b8"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0089F4"
+addr = "89fc"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_008A56"
+addr = "8a5e"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_008A56_8A67"
+addr = "8a6f"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_008AB3"
+addr = "8abb"
+bank = 0
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_hp"
+addr = "8000"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_018021"
+addr = "8021"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "queue_sound"
+addr = "8049"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "queue_sound_F0"
+addr = "804d"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "queue_sound_F1"
+addr = "8051"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "queue_sound_id"
+addr = "8053"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_018061"
+addr = "8061"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_018061_8064"
+addr = "8064"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "clear_oam_sprite_data"
+addr = "8074"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_018091"
+addr = "8091"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "remove_tasks"
+addr = "80a6"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "copy_ram_to_vram"
+addr = "80c7"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "copy_ram_to_vram_precalc"
+addr = "80dd"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01810E"
+addr = "810e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0181DD_8245"
+addr = "8245"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01826E"
+addr = "826e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "enable_nmi"
+addr = "833a"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "disable_nmi"
+addr = "8343"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "enable_forced_blanking"
+addr = "834c"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_max_brightness"
+addr = "8360"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0183D4_83DB"
+addr = "83db"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "call_rng"
+addr = "8422"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "update_animation"
+addr = "8451"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "update_animation_normal"
+addr = "8459"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_sprite"
+addr = "847e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_sprite_8480"
+addr = "8480"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_sprite_8482"
+addr = "8482"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_sprite_84A7"
+addr = "84a7"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_sprite_84AF"
+addr = "84af"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0184B3"
+addr = "84b3"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0184B3_84B5"
+addr = "84b5"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "fill_sprite_queue"
+addr = "84c3"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "update_oam_table"
+addr = "85bb"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "sprite_queue_to_oam"
+addr = "8673"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "meta_sprite_to_oam_entry"
+addr = "868e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_speed_xyg"
+addr = "87f2"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_speed_x"
+addr = "8816"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_speed_y"
+addr = "8826"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "apply_grav_x_update_pos"
+addr = "8836"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01884B"
+addr = "884b"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01884B_8860"
+addr = "8860"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01884B_8876"
+addr = "8876"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "update_pos"
+addr = "88a2"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "update_pos_xyg_add"
+addr = "88b7"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "update_pos_xy"
+addr = "88ca"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "update_pos_y"
+addr = "88cd"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "update_pos_x"
+addr = "88e1"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "update_pos_x_local"
+addr = "88e5"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "update_pos_x_88E9"
+addr = "88e9"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "mul_speed_update_pos"
+addr = "89d9"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "mulu_multiplicand_set"
+addr = "8a73"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "divu"
+addr = "8a7e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "mulu"
+addr = "8a93"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_018B25"
+addr = "8b25"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "prepare_object"
+addr = "8c2b"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "prepare_object_with_obj_slot"
+addr = "8c37"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "prepare_object2"
+addr = "8c55"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_spawn_offset"
+addr = "8c84"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_offset_from_obj_y_offset"
+addr = "8cd6"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "get_object_slot"
+addr = "8d4a"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_018D5B"
+addr = "8d5b"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_018DB8"
+addr = "8db8"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_018DC0"
+addr = "8dc0"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_018DC0_8E0E"
+addr = "8e0e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_018E32"
+addr = "8e32"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_018E32_8E73"
+addr = "8e73"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_018E32_8E79"
+addr = "8e79"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_018E32_8E81"
+addr = "8e81"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "update_score"
+addr = "8ee6"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "add_extra_life"
+addr = "8f67"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "add_extra_life_local"
+addr = "8f6b"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "update_hud"
+addr = "8f80"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0190B9"
+addr = "90b9"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0190B9_90CB"
+addr = "90cb"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0190B9_palette_to_ram"
+addr = "90ce"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019136_9150"
+addr = "9150"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019136_9153"
+addr = "9153"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019136_9164"
+addr = "9164"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019136_9187"
+addr = "9187"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_direction32_custom_obj"
+addr = "922b"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01931E"
+addr = "931e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "prepare_search_solid_tile_vertical"
+addr = "9389"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0194CF"
+addr = "94cf"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "clear_ppu_vars"
+addr = "951e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019539"
+addr = "9539"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "sort_weapon_slots"
+addr = "9580"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "sort_object_slots"
+addr = "95b2"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0195E4"
+addr = "95e4"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "get_rng_16"
+addr = "9636"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "get_rng_bitmask_8b"
+addr = "963e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "get_rng_bitmask_16b"
+addr = "9649"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "get_rng_bool"
+addr = "9657"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_weapon_hitbox"
+addr = "9681"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019697"
+addr = "9697"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019697_96CA"
+addr = "96ca"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0196EF"
+addr = "96ef"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019776_97AB"
+addr = "97ab"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019776_97B0"
+addr = "97b0"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019776_97C3"
+addr = "97c3"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0197D1_985F"
+addr = "985f"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0198A4_9987"
+addr = "9987"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0198A4_9A05"
+addr = "9a05"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019A88"
+addr = "9a88"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019A93_9B12"
+addr = "9b12"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019A93_9B34"
+addr = "9b34"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019A93_9B78"
+addr = "9b78"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019A93_9B94"
+addr = "9b94"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019A93_9BB4"
+addr = "9bb4"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019A93_9BC8"
+addr = "9bc8"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019CBE"
+addr = "9cbe"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019CE0_9D1F"
+addr = "9d1f"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019CE0_9D8A"
+addr = "9d8a"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_019CE0_9DA7"
+addr = "9da7"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A00A_A067"
+addr = "a067"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A00A_A084"
+addr = "a084"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "decompress"
+addr = "a21d"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "decompress_precalc"
+addr = "a230"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "setup_decompression"
+addr = "a243"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "setup_decompression_own_data"
+addr = "a263"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "decompress_step"
+addr = "a26f"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "decompress_stage_data"
+addr = "a33c"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "get_tile_type_entry_2"
+addr = "a42a"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "get_tile_type_precalc_index"
+addr = "a47e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A559"
+addr = "a559"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A56B"
+addr = "a56b"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A593"
+addr = "a593"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "get_collision_offset_x_sub_2"
+addr = "a5a2"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A5AF"
+addr = "a5af"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A5F9"
+addr = "a5f9"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A5F9_A5FC"
+addr = "a5fc"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A649"
+addr = "a649"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A649_A673"
+addr = "a673"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "add_task"
+addr = "a6fe"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "current_task_clear_state"
+addr = "a744"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A74A_entry"
+addr = "a7a4"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A74A_A7BF"
+addr = "a7bf"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A74A_A811"
+addr = "a811"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A87C_ABB3"
+addr = "abb3"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A87C_AC99"
+addr = "ac99"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01A87C_AE55"
+addr = "ae55"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01AF04"
+addr = "af04"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01AF04_local"
+addr = "af08"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "pause_handling"
+addr = "b14b"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B26D"
+addr = "b26d"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B26D_local"
+addr = "b271"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "hud_flicker"
+addr = "b2b1"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B2D6"
+addr = "b2d6"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "tick_knife_rapid_timer"
+addr = "b2df"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B46D"
+addr = "b46d"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B4C5"
+addr = "b4c5"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "checkpoint_handling_set_x_pos"
+addr = "b50e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B526"
+addr = "b526"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B5AB"
+addr = "b5ab"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B5AB_local"
+addr = "b5af"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B658"
+addr = "b658"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B6AE_local"
+addr = "b6b2"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B6CB"
+addr = "b6cb"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B6CB_B6E0"
+addr = "b6e0"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B86E"
+addr = "b86e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B86E_B875"
+addr = "b875"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B90E"
+addr = "b90e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B90E_local"
+addr = "b912"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "tick_timer"
+addr = "b96e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B9A8"
+addr = "b9a8"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B9A8_BA09"
+addr = "ba09"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B9A8_BA5E"
+addr = "ba5e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B9A8_BA74"
+addr = "ba74"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B9A8_BA9C"
+addr = "ba9c"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B9A8_BB70"
+addr = "bb70"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01B9A8_BC51"
+addr = "bc51"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01BD1D_BD51"
+addr = "bd51"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01BD1D_BD8E"
+addr = "bd8e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01BDB8"
+addr = "bdb8"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "load_stage_screen_layout"
+addr = "be1c"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01BEBC"
+addr = "bebc"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01BF31"
+addr = "bf31"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01BF78"
+addr = "bf78"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01BF78_BFCE"
+addr = "bfce"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C00B_C028"
+addr = "c028"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C045"
+addr = "c045"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C045_far"
+addr = "c055"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C062"
+addr = "c062"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C062_C0E0"
+addr = "c0e0"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C062_C115"
+addr = "c115"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C14A"
+addr = "c14a"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C1DC"
+addr = "c1dc"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C219"
+addr = "c219"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C255"
+addr = "c255"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C29D"
+addr = "c29d"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C29D_C2A1"
+addr = "c2a1"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C2E7"
+addr = "c2e7"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C336"
+addr = "c336"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C336_C33A"
+addr = "c33a"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C386"
+addr = "c386"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C38A"
+addr = "c38a"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C4AB"
+addr = "c4ab"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C679_C67D"
+addr = "c67d"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01C679_local"
+addr = "c681"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "magic_bar_handling"
+addr = "c8a7"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "magic_bar_handling_CA86"
+addr = "ca86"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "magic_bar_handling_CBB6"
+addr = "cbb6"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "magic_bar_handling_CBD4"
+addr = "cbd4"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "magic_bar_handling_CBDA"
+addr = "cbda"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01CCAF"
+addr = "ccaf"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_create_CE85"
+addr = "ce85"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_create_CE9C"
+addr = "ce9c"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01CFE6"
+addr = "cfe6"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_thing"
+addr = "d090"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_thing_D133"
+addr = "d133"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_thing_D143"
+addr = "d143"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_thing_D16C"
+addr = "d16c"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_thing_D184"
+addr = "d184"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_thing_D1AF"
+addr = "d1af"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D1C4_D1C5"
+addr = "d1c5"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D1E1"
+addr = "d1e1"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D263"
+addr = "d263"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D263_D2AB"
+addr = "d2ab"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D263_D2BD"
+addr = "d2bd"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D263_D2C9"
+addr = "d2c9"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_set_facing_get_pressed_direction"
+addr = "d2d4"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D2E2"
+addr = "d2e2"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D30F"
+addr = "d30f"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D371_D3C4"
+addr = "d3c4"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D371_D47D"
+addr = "d47d"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D371_D4D8"
+addr = "d4d8"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D371_D50B"
+addr = "d50b"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D371_D54E"
+addr = "d54e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D565"
+addr = "d565"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D6F8"
+addr = "d6f8"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D8B3"
+addr = "d8b3"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur__01D8BF"
+addr = "d8bf"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01D8E6"
+addr = "d8e6"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01D8F1"
+addr = "d8f1"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01D91C"
+addr = "d91c"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01D91C_D94E"
+addr = "d94e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01D957"
+addr = "d957"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01D97E"
+addr = "d97e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "get_weapon_slot"
+addr = "d9c3"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "get_weapon_slot_local"
+addr = "d9c7"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_arthur_palette"
+addr = "d9d8"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_arthur_palette_D9DB"
+addr = "d9db"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01DA88"
+addr = "da88"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01DAA4"
+addr = "daa4"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "store_equip_state"
+addr = "dccf"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_cap_fall_speed"
+addr = "dd45"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01DD7A"
+addr = "dd7a"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01DD90"
+addr = "dd90"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "setup_arthur_key_state"
+addr = "ddae"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01DDCE"
+addr = "ddce"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_invuln_flag"
+addr = "dde6"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_invuln_flag_custom_flags"
+addr = "dde8"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "clear_invuln_flag_local"
+addr = "ddf3"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01DE0B"
+addr = "de0b"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01DE62_DE63"
+addr = "de63"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01DEE7_DEE8"
+addr = "dee8"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_seal_E155"
+addr = "e155"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01E224_E26A"
+addr = "e26a"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01E285"
+addr = "e285"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "lance__E311"
+addr = "e311"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "bowgun_upgraded_thing"
+addr = "e63c"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "scythe_thing"
+addr = "e6ba"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "torch_flame_thing"
+addr = "e821"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "lance2_fire_trail_thing"
+addr = "e939"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01E967"
+addr = "e967"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "nuclear_create_EA36"
+addr = "ea36"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "nuclear_thing"
+addr = "ea54"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "nuclear_projectile_thing"
+addr = "ea95"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "nuclear_projectile__EA9A"
+addr = "ea9a"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "bracelet_tail__01EAC3"
+addr = "eac3"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "bracelet_tail_thing"
+addr = "eb0f"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "bracelet__01EB18"
+addr = "eb18"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "bracelet__EC24"
+addr = "ec24"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "bracelet__EC30"
+addr = "ec30"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "bracelet_thing"
+addr = "ec38"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01EC63"
+addr = "ec63"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "lightning_thing"
+addr = "ed96"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01EDAD"
+addr = "edad"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "thunder_thing"
+addr = "ef3b"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01EF44"
+addr = "ef44"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "fire_dragon_create_F24A"
+addr = "f24a"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "fire_dragon_thing"
+addr = "f25b"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "tornado_thing"
+addr = "f2d8"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "axe_upgraded_thing"
+addr = "f3d0"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "axe_thing"
+addr = "f3f8"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "triblade_create_F4A6"
+addr = "f4a6"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "triblade_upgraded_thing"
+addr = "f4d2"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "triblade_thing"
+addr = "f4d6"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "get_magic_slot"
+addr = "f4d7"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "shield_magic_thing"
+addr = "f567"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "seek__F648"
+addr = "f648"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "seek__F653"
+addr = "f653"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "seek__F65E"
+addr = "f65e"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "seek_thing"
+addr = "f669"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01F66A"
+addr = "f66a"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01F6C9"
+addr = "f6c9"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01F6C9_local"
+addr = "f6cd"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01F6D7"
+addr = "f6d7"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01F722"
+addr = "f722"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_01F722_F768"
+addr = "f768"
+bank = 1
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028000"
+addr = "8000"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028048"
+addr = "8048"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028053"
+addr = "8053"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028074"
+addr = "8074"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028074_807D"
+addr = "807d"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028074_80A3"
+addr = "80a3"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028074_80A7"
+addr = "80a7"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "remove_child_object"
+addr = "80b9"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0280E9"
+addr = "80e9"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0280E9_80EE"
+addr = "80ee"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0280E9_80F2"
+addr = "80f2"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02810D"
+addr = "810d"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02810D_local"
+addr = "8111"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02812E"
+addr = "812e"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0281BB"
+addr = "81bb"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0281BB_far"
+addr = "81dd"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0281FF"
+addr = "81ff"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "object_handling"
+addr = "821b"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028B17_8B1A"
+addr = "8b1a"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028B1E"
+addr = "8b1e"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028B1E_local"
+addr = "8b24"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028B2A"
+addr = "8b2a"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028B2A_local"
+addr = "8b30"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028B36_local"
+addr = "8b3a"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028B52"
+addr = "8b52"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028B52_local"
+addr = "8b56"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028B7E"
+addr = "8b7e"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028BDE_local"
+addr = "8be2"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "drop_pot"
+addr = "8c56"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "drop_pot_local"
+addr = "8c5a"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "pot_creation"
+addr = "8c6a"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "pot_creation_local"
+addr = "8c6e"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "pot_update_position"
+addr = "8cf1"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "pot_update_position_local"
+addr = "8cf5"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028D09"
+addr = "8d09"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_028D09_local"
+addr = "8d0d"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "zombie_create_8F64"
+addr = "8f64"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "storm_cesaris__946E"
+addr = "946e"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "hannibal_create_9674"
+addr = "9674"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0296E9"
+addr = "96e9"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_0296FE"
+addr = "96fe"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_029713_97F8"
+addr = "97f8"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_029713_97FC"
+addr = "97fc"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "eagler__9A0A"
+addr = "9a0a"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "spawner_icicle_9BC1"
+addr = "9bc1"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "icicle_create_9CB0"
+addr = "9cb0"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "flying_knight__9EC1"
+addr = "9ec1"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "hydra__AF17"
+addr = "af17"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "hydra__AF1F"
+addr = "af1f"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "hydra__AF27"
+addr = "af27"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "hydra__B03C"
+addr = "b03c"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02B102"
+addr = "b102"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "belial__B36A"
+addr = "b36a"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "weapon_create_BC16"
+addr = "bc16"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "bracelet_item__C040"
+addr = "c040"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "rosebud_create_C275"
+addr = "c275"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "rosebud_create_C298"
+addr = "c298"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "rosebud_thing_C389"
+addr = "c389"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "raft__C90B"
+addr = "c90b"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "raft__C90B_C927"
+addr = "c927"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "raft__C9BB"
+addr = "c9bb"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "raft__C9E7"
+addr = "c9e7"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "raft__CA00"
+addr = "ca00"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "raft__CA41"
+addr = "ca41"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "skulls__CB0F"
+addr = "cb0f"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "skulls__CB0F_CB13"
+addr = "cb13"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "skulls__CB0F_CB18"
+addr = "cb18"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "skulls__CB29"
+addr = "cb29"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_map__CCE7_CD4A"
+addr = "cd4a"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "wolf__E3F2"
+addr = "e3f2"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "wolf_thing_E427"
+addr = "e427"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "siren_thing_E5B0"
+addr = "e5b0"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "siren__E5EF"
+addr = "e5ef"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "ghost_create_E873"
+addr = "e873"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "ghost_create_E88D"
+addr = "e88d"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "ghost_create_E899"
+addr = "e899"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "ghost_create_E8A5"
+addr = "e8a5"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "ghost__E919"
+addr = "e919"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "ghost_unformed_create_E9A1"
+addr = "e9a1"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02E9FA_local"
+addr = "e9fe"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02EB57"
+addr = "eb57"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02EB57_far"
+addr = "eb7a"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02EBC1"
+addr = "ebc1"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02F13E"
+addr = "f13e"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "flower_part_create_F256"
+addr = "f256"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "mimic_create_F4EF"
+addr = "f4ef"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "mimic__F53A"
+addr = "f53a"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02F9B2"
+addr = "f9b2"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02F9B6"
+addr = "f9b6"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_magic2_far"
+addr = "f9ba"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_magic2_bracelet_shield_magic_far"
+addr = "f9be"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02F9C2"
+addr = "f9c2"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02F9C6"
+addr = "f9c6"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02F9CA"
+addr = "f9ca"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_shield_far"
+addr = "f9ce"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02F9D2"
+addr = "f9d2"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02F9DA"
+addr = "f9da"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02F9DA_F9E0"
+addr = "f9e0"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02F9ED"
+addr = "f9ed"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_magic"
+addr = "f9fa"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_magic_local"
+addr = "f9fe"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "bracelet_collision_check"
+addr = "fa37"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_magic2"
+addr = "fa65"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_magic2_entry"
+addr = "fa6d"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_magic2_custom_hitbox"
+addr = "faa1"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_magic2_FAC0"
+addr = "fac0"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "magic_overlap_check"
+addr = "fad4"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "magic_overlap_check_custom_hitbox_index"
+addr = "fadc"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FB2B"
+addr = "fb2b"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FB62"
+addr = "fb62"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FB62_FB69"
+addr = "fb69"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FB9C"
+addr = "fb9c"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FB9C_FBC0"
+addr = "fbc0"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FBF9"
+addr = "fbf9"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FC0E"
+addr = "fc0e"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FC41"
+addr = "fc41"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FC56"
+addr = "fc56"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FC56_FC7B"
+addr = "fc7b"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FCA7"
+addr = "fca7"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "weapon_overlap_check_custom_hitbox"
+addr = "fcd6"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "weapon_overlap_check_entry"
+addr = "fce7"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "weapon_overlap_check_custom_hitbox_index"
+addr = "fcf3"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FD62"
+addr = "fd62"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FD62_FD66"
+addr = "fd66"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FD62_FD6A"
+addr = "fd6a"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FD62_FD75"
+addr = "fd75"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FD62_FD7C"
+addr = "fd7c"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FD62_FD87"
+addr = "fd87"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FD62_FDA2"
+addr = "fda2"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FDB3"
+addr = "fdb3"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FDB3_FDB7"
+addr = "fdb7"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FDCD"
+addr = "fdcd"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_overlap_check_8bit"
+addr = "fdd1"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_overlap_check_8bit_local"
+addr = "fdd5"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_overlap_check_FED8_8bit"
+addr = "fddb"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arthur_overlap_check_FED8_8bit_local"
+addr = "fddf"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FE1E"
+addr = "fe1e"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FE1E_local"
+addr = "fe23"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_02FE1E_FE27"
+addr = "fe27"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_arthur"
+addr = "febc"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_arthur_arthur_overlap_check"
+addr = "fed3"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_arthur_FED8"
+addr = "fed8"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_shield"
+addr = "ff22"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "collision_check_shield_overlap_check"
+addr = "ff57"
+bank = 2
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "princess_dialogue__9CF2"
+addr = "9cf8"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "tower_edge_thing"
+addr = "9f41"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "gargoyle_statue_thing"
+addr = "a2ae"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "geyser_thing"
+addr = "a3cc"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_03A3E7_thing"
+addr = "a429"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_03A42C_thing"
+addr = "a523"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arremer_thing"
+addr = "aa55"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arremer__AA87"
+addr = "aa8d"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arremer__AAB3_AAD5"
+addr = "aadb"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "moving_platform__ACC1"
+addr = "acc7"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "moving_platform_thing"
+addr = "ace0"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "skull_flower_multi_create_ADD2"
+addr = "add8"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "skull_flower_multi__AFFF"
+addr = "b005"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "skull_flower_multi__B00D"
+addr = "b013"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "skull_flower_multi_thing"
+addr = "b04d"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "skull_flower_multi__B08E"
+addr = "b094"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "skull_flower_multi__B09D"
+addr = "b0a3"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "skull_flower_multi__B0B9"
+addr = "b0bf"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "skull_flower_multi__B0EB"
+addr = "b0f1"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_03B114"
+addr = "b11a"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "grilian_projectile_thing"
+addr = "b181"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "death_crawler_handler_create_B429"
+addr = "b42f"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "death_crawler_handler__B4A2"
+addr = "b4a8"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "death_crawler_handler__B4B7"
+addr = "b4bd"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "death_crawler_handler__B4D2"
+addr = "b4d8"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "death_crawler_handler_thing"
+addr = "b51b"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "death_crawler_part_thing"
+addr = "b5f1"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "death_crawler_thing"
+addr = "b615"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "death_crawler_projectile_create_B6C9"
+addr = "b6cf"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "death_crawler_projectile_thing"
+addr = "b704"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "menu_control_create_BA04"
+addr = "ba0a"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "menu_control_create_BAFB"
+addr = "bb01"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "menu_control_create_BB85"
+addr = "bb8b"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "menu_control_create_BB96"
+addr = "bb9c"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "menu_control_create_BBE6"
+addr = "bbec"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "tiny_goblin_thing"
+addr = "bdee"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arremer_objects_projectile_thing"
+addr = "be63"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arremer_objects_killers_create_BEF3"
+addr = "bef9"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arremer_objects_killers_create_BEF5"
+addr = "befb"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arremer_objects_killers_thing"
+addr = "bf36"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "arremer_objects__BF5C"
+addr = "bf62"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "killer_thing"
+addr = "c0ec"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "killer__C116_C124"
+addr = "c12a"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "hannibal_projectile_thing"
+addr = "c1e2"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "explosion_spawner__C2B2"
+addr = "c2b8"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "coral_thing"
+addr = "c344"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "lava_thing"
+addr = "c5b0"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "cockatrice_head2_spawner_thing"
+addr = "c686"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "cockatrice_head2_thing"
+addr = "cad5"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "cockatrice_head2_projectile_thing"
+addr = "cbba"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "ice_bridge_segment_thing"
+addr = "cc35"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "ice_bridge_spawner_thing"
+addr = "ccbd"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "intro_cutscene_obj_create_CEF1"
+addr = "cef1"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "intro_cutscene_obj_create_CEFD"
+addr = "cefd"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "intro_cutscene_obj_thing"
+addr = "d0b9"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "intro_cutscene_obj__D0BB"
+addr = "d0bd"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "intro_cutscene_obj__D0C1"
+addr = "d0c3"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "astaroth__D1FE"
+addr = "d200"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "astaroth__D34E_D356"
+addr = "d358"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "nebiroth__D36F"
+addr = "d371"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "astaroth_nebiroth_body_thing"
+addr = "d5ec"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "astaroth_projectiles_flame_thing"
+addr = "d65f"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "astaroth_projectiles_laser_thing"
+addr = "d7ba"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "nebiroth_flame_thing"
+addr = "d81c"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "nebiroth_laser_create_D89C"
+addr = "d89e"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "nebiroth_laser_thing"
+addr = "d8b8"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "conveyor_belt_thing"
+addr = "d98e"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "conveyor_belt__D998"
+addr = "d99a"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "conveyor_belt__D998_D9B3"
+addr = "d9b5"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "conveyor_belt__D9CB"
+addr = "d9cd"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "conveyor_belt__D9CB_D9CD"
+addr = "d9cf"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "conveyor_belt__DA65"
+addr = "da67"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "gate2__DB35"
+addr = "db37"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "mad_dog_thing"
+addr = "dcfb"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "grilian_thing"
+addr = "dedf"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "avalanche_thing"
+addr = "e0d6"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "avalanche__E108"
+addr = "e10a"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "veil_allocen_thing"
+addr = "e420"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "veil_allocen_thing_E488"
+addr = "e48a"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "veil_allocen_part_thing"
+addr = "e547"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "veil_allocen_claws__E5B3"
+addr = "e5b5"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "veil_allocen_claws_claw1_thing"
+addr = "e5f4"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "veil_allocen_claws__E62E"
+addr = "e630"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "veil_allocen_claws_claw2_thing"
+addr = "e6f3"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "veil_allocen_claws__E720"
+addr = "e722"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "veil_allocen_claws__E734"
+addr = "e736"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "veil_allocen_projectile_thing"
+addr = "e7ae"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "freeze_splinter_thing"
+addr = "e7d7"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_03E7FE"
+addr = "e800"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "samael_destroy_EBA8"
+addr = "ebaa"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "samael__EBDB"
+addr = "ebdd"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "samael_thing"
+addr = "ebf2"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "samael__EC27"
+addr = "ec29"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "samael__EC3B"
+addr = "ec3d"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "samael_platform_thing"
+addr = "ed05"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "samael_platform__ED23"
+addr = "ed25"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "samael_laser_thing"
+addr = "edda"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_03F526_F527"
+addr = "f49a"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_03F526_F606"
+addr = "f579"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_03F526_F61C"
+addr = "f58f"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_03F526_F620"
+addr = "f593"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_03F526_F63D"
+addr = "f5b0"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_03F526_F745"
+addr = "f6b8"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_03F526_F749"
+addr = "f6bc"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "cutscene_arthur_thing"
+addr = "f74e"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "cutscene_princess_thing"
+addr = "f76b"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "satan_thing"
+addr = "f7f9"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "satan_wings_thing"
+addr = "f815"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "credits"
+addr = "f816"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "credits_FB60"
+addr = "fad3"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "credits_FBD5"
+addr = "fb48"
+bank = 3
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_048A6B"
+addr = "8f1e"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_048AD3_entry"
+addr = "8f8e"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_048B2B_8B2C"
+addr = "8fdf"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_048C43"
+addr = "90f6"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_048DF9"
+addr = "92ac"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_048E3F"
+addr = "92f2"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_048E47"
+addr = "92fa"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_048E68"
+addr = "931b"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_048E68_local"
+addr = "931f"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_048EAD"
+addr = "9360"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "time_over"
+addr = "9490"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "game_over"
+addr = "9538"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_049121"
+addr = "95d4"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_049121_91D3"
+addr = "9686"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_049121_920C"
+addr = "96bf"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_049219"
+addr = "96cc"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_049219_921D"
+addr = "96d0"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_049219_9228"
+addr = "96db"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_049219_922E"
+addr = "96e1"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_stage_old"
+addr = "96f5"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "set_stage"
+addr = "9705"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_049310"
+addr = "97c3"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_04F000"
+addr = "f000"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_04F003"
+addr = "f003"
+bank = 4
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_058000"
+addr = "8000"
+bank = 5
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "_05810A"
+addr = "810a"
+bank = 5
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+
+[[func]]
+name = "meta_sprite_part_to_ram_entry"
+addr = "8131"
+bank = 5
+emit = true
+note = "call target from FredYeye SGnG disassembly"
+# <<< END disassembly import
